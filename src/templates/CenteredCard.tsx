@@ -24,7 +24,7 @@ export default function CenteredCard() {
             />
             <button
               type="submit"
-              className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="min-w-[10rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Add Task
             </button>
@@ -33,33 +33,58 @@ export default function CenteredCard() {
           <section
             aria-label="card container"
             className="mx-auto mt-10 flex max-w-md gap-x-4"
-            // className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full"
           >
-            <label htmlFor="Edit task" className="sr-only">
-              Edit
-            </label>
-            <input
-              id="edit-task"
-              name="edit-task"
-              type="text"
-              required
-              placeholder="Add a new task"
-              autoComplete="task"
-              className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-            />
-            <button
-              type="submit"
-              className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Edit
-            </button>
+            <div aria-label="task 1" className="mx-auto max-w-md gap-x-4 flex">
+              <label htmlFor="Edit task" className="sr-only">
+                Task 1
+              </label>
+              <input
+                id="edit-task"
+                name="edit-task"
+                type="text"
+                readOnly
+                value="Task 1"
+                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+              />
+              <button
+                type="submit"
+                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Delete
+              </button>
+            </div>
 
-            <button
-              type="button"
-              className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Delete
-            </button>
+            <div aria-label="task 2" className="mx-auto max-w-md gap-x-4 flex">
+              <label htmlFor="Edit task" className="sr-only">
+                Task 2
+              </label>
+              <input
+                id="edit-task"
+                name="edit-task"
+                type="text"
+                readOnly
+                value="Task 2"
+                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+              />
+              <button
+                type="submit"
+                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Delete
+              </button>
+            </div>
           </section>
 
           <svg
