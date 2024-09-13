@@ -1,3 +1,5 @@
+import { TaskList } from "components/TaskList";
+import { PlusIcon } from "@heroicons/react/20/solid";
 import { useState, useReducer } from "react";
 
 const tasksReducer = (state: Task[], action: Action) => {
@@ -59,19 +61,19 @@ export default function CenteredCard() {
     });
   }
 
-  // function handleChangeTask(task: Task) {
-  //   dispatch({
-  //     type: "changed",
-  //     task: task,
-  //   });
-  // }
-  //
-  // function handleDeleteTask(taskId: number) {
-  //   dispatch({
-  //     type: "deleted",
-  //     id: taskId,
-  //   });
-  // }
+  function handleChangeTask(task: Task) {
+    dispatch({
+      type: "changed",
+      task: task,
+    });
+  }
+
+  function handleDeleteTask(taskId: number) {
+    dispatch({
+      type: "deleted",
+      id: taskId,
+    });
+  }
 
   const onAddTask = handleAddTask;
 
@@ -111,9 +113,10 @@ export default function CenteredCard() {
             />
             <button
               type="submit"
-              className="min-w-[10rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="min-w-[6.25rem] inline-flex items-center justify-start gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Add Task
+              <PlusIcon aria-hidden="true" className="-ml-0.5 h-5 w-5" />
+              Task
             </button>
           </form>
 
@@ -121,31 +124,11 @@ export default function CenteredCard() {
             aria-label="card container"
             className="mx-auto mt-10 flex max-w-md gap-x-4"
           >
-            <div aria-label="task 1" className="mx-auto max-w-md gap-x-4 flex">
-              <label htmlFor="Edit task" className="sr-only">
-                Task 1
-              </label>
-              <input
-                id="edit-task"
-                name="edit-task"
-                type="text"
-                readOnly
-                value="Task 1"
-                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-              />
-              <button
-                type="submit"
-                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Edit
-              </button>
-              <button
-                type="button"
-                className="min-w-[4.5rem] flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Delete
-              </button>
-            </div>
+            <TaskList
+              tasks={tasks}
+              onChangeTask={handleChangeTask}
+              onDeleteTask={handleDeleteTask}
+            />
           </section>
 
           <svg

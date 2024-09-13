@@ -6,9 +6,9 @@ export const TaskList = ({
   onDeleteTask,
 }: TaskListProps) => {
   return (
-    <ul>
+    <ul className="w-full">
       {tasks.map((task: Task) => (
-        <li key={task.id}>
+        <li key={task.id} className="mb-4">
           <Task
             key={task.id}
             task={task}

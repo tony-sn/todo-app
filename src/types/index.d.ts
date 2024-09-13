@@ -22,12 +22,12 @@ type Action =
 
 type TaskProps = {
   task: Task;
-  onChange: (task: Task) => Task;
+  onChange: (task: Task) => void;
   onDelete: (id: number) => void;
 };
 
 type TaskListProps = {
   tasks: Task[];
-  onChangeTask: (task: Task) => Task;
+  onChangeTask: (task: Task) => void;
   onDeleteTask: (id: number) => void;
 };
