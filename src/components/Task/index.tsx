@@ -2,7 +2,8 @@ import {
   TrashIcon,
   PencilSquareIcon,
   CheckIcon,
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/20/solid";
+import { Tooltip } from "components/Tooltip";
 
 import { useState } from "react";
 
@@ -53,24 +54,27 @@ export const Task = ({ task, onChange, onDelete }: TaskProps) => {
       <div className="flex gap-x-2">
         {isEditing ? (
           <button
-            className="inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="group inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             onClick={() => setIsEditing(false)}
           >
-            <CheckIcon className="-ml-0.5 h-5 w-5" />
+            <Tooltip label="Save" position="left" />
+            <CheckIcon className="h-5 w-5" />
           </button>
         ) : (
           <button
-            className="inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="group inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             onClick={() => setIsEditing(true)}
           >
-            <PencilSquareIcon className="-ml-0.5 h-5 w-5" />
+            <Tooltip label="Edit" position="left" />
+            <PencilSquareIcon className="h-5 w-5" />
           </button>
         )}
         <button
-          className="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+          className="group inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
           onClick={() => onDelete(task.id)}
         >
-          <TrashIcon className="-ml-0.5 h-5 w-5" />
+          <Tooltip label="Delete" position="right" />
+          <TrashIcon className="h-5 w-5" />
         </button>
       </div>
     </div>
