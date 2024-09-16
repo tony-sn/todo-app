@@ -42,8 +42,6 @@ export const Task = ({ task, onChange, onDelete }: TaskProps) => {
         type="checkbox"
         checked={task.done}
         onChange={(e) => {
-          console.log(task);
-          console.log({ e });
           onChange({
             ...task,
             done: e.target.checked,
