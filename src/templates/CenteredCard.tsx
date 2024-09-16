@@ -37,6 +37,8 @@ const initialTasks = JSON.parse(
   localStorage.getItem(config.application) || "[]"
 );
 
+const today = new Date().toLocaleDateString();
+
 export default function CenteredCard() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   const [text, setText] = useState("");
@@ -76,7 +78,7 @@ export default function CenteredCard() {
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
           <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            New Todo App
+            Todo List {`(${today})`}
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
             Use this to add new todo items and manage your tasks with ease.
@@ -105,7 +107,7 @@ export default function CenteredCard() {
             />
             <button
               type="submit"
-              className="min-w-[6.25rem] inline-flex items-center justify-start gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="min-w-[6.5rem] inline-flex items-center justify-start gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               <PlusIcon aria-hidden="true" className="-ml-0.5 h-5 w-5" />
               Task
