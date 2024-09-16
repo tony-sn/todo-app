@@ -1,6 +1,10 @@
-import { TaskList } from "components/TaskList";
+import { useEffect, useReducer, useState } from "react";
+
 import { PlusIcon } from "@heroicons/react/20/solid";
-import { useState, useReducer } from "react";
+
+import { TaskList } from "components/TaskList";
+
+import config from "@/config.json";
 
 const tasksReducer = (state: Task[], action: Action) => {
   switch (action.type) {
@@ -29,29 +33,15 @@ const tasksReducer = (state: Task[], action: Action) => {
   }
 };
 
-const initialTasks = [
-  {
-    id: 0,
-    text: "House work",
-    done: true,
-  },
-  {
-    id: 1,
-    text: "Visit the gym",
-    done: false,
-  },
-  {
-    id: 2,
-    text: "Drink matcha",
-    done: false,
-  },
-];
-
-let nextId = 3;
+const initialTasks = JSON.parse(
+  localStorage.getItem(config.application) || "[]"
+);
 
 export default function CenteredCard() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   const [text, setText] = useState("");
+
+  let nextId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 0;
 
   function handleAddTask(text: string) {
     dispatch({
@@ -76,6 +66,10 @@ export default function CenteredCard() {
   }
 
   const onAddTask = handleAddTask;
+
+  useEffect(() => {
+    localStorage.setItem(config.application, JSON.stringify(tasks));
+  }, [tasks]);
 
   console.log({ tasks, onAddTask });
 

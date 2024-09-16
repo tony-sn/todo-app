@@ -1,11 +1,12 @@
+import { useState } from "react";
+
 import {
   TrashIcon,
   PencilSquareIcon,
   CheckIcon,
 } from "@heroicons/react/20/solid";
-import { Tooltip } from "components/Tooltip";
 
-import { useState } from "react";
+import { Tooltip } from "components/Tooltip";
 
 export const Task = ({ task, onChange, onDelete }: TaskProps) => {
   const [isEditing, setIsEditing] = useState(false);
