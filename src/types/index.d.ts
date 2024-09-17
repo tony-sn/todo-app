@@ -18,6 +18,9 @@ type Action =
       type: "deleted";
       id: number;
     }
+  | {
+      type: "cleared";
+    }
   | { type: "unknown" | never };
 
 type TaskProps = {

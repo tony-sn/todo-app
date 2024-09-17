@@ -6,6 +6,12 @@ import { TaskList } from "components/TaskList";
 
 import config from "@/config.json";
 
+const initialTasks = JSON.parse(
+  localStorage.getItem(config.application) || "[]"
+);
+
+const today = new Date().toLocaleDateString();
+
 const tasksReducer = (state: Task[], action: Action) => {
   switch (action.type) {
     case "added": {
@@ -27,17 +33,15 @@ const tasksReducer = (state: Task[], action: Action) => {
       return state.filter((t) => t.id !== action.id);
     }
 
+    case "cleared": {
+      return [];
+    }
+
     default: {
       throw Error("Unknown action: " + action.type);
     }
   }
 };
-
-const initialTasks = JSON.parse(
-  localStorage.getItem(config.application) || "[]"
-);
-
-const today = new Date().toLocaleDateString();
 
 export default function CenteredCard() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
@@ -57,6 +61,12 @@ export default function CenteredCard() {
     dispatch({
       type: "changed",
       task: task,
+    });
+  }
+
+  function handleClearTasks() {
+    dispatch({
+      type: "cleared",
     });
   }
 
@@ -112,6 +122,14 @@ export default function CenteredCard() {
               <PlusIcon aria-hidden="true" className="-ml-0.5 h-5 w-5" />
               Task
             </button>
+            {tasks.length > 1 && (
+              <button
+                onClick={handleClearTasks}
+                className="min-w-[6.5rem] inline-flex items-center justify-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+              >
+                Clear All
+              </button>
+            )}
           </form>
 
           <section
